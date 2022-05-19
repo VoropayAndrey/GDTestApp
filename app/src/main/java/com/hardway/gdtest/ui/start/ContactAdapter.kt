@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hardway.gdtest.R
-import com.hardway.gdtest.domain.ContactEntity
+import com.hardway.gdtest.domain.entities.ContactEntity
 import kotlinx.android.synthetic.main.item_contact_list.view.*
 
 class ContactAdapter(var items: List<ContactEntity>, val context: Activity, val onClick: (item: ContactEntity) -> Unit) : RecyclerView.Adapter<ViewHolder>() {

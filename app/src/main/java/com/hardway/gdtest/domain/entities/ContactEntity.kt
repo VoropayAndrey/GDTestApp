@@ -1,4 +1,4 @@
-package com.hardway.gdtest.domain
+package com.hardway.gdtest.domain.entities
 
 data class ContactEntity(val id: Int = 0,
                          val firstName: String,

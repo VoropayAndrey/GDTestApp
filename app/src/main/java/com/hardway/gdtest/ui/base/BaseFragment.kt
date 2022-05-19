@@ -1,15 +1,11 @@
 package com.hardway.gdtest.ui.base
 
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import com.hardway.gdtest.extensions.getAppComponent
-import androidx.fragment.app.viewModels
 import com.hardway.gdtest.ui.main.MainActivity
-import com.hardway.gdtest.ui.main.MainViewModel
+import com.hardway.gdtest.ui.viewmodels.MainViewModel
 
 abstract class BaseFragment : Fragment() {
+    protected lateinit var spinner: ProgressBar
 
-
-    fun getViewModel(): MainViewModel {
-        return (requireActivity() as MainActivity).viewModel
-    }
 }

@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "GridDynamicsTestTask190522"
+rootProject.name = "GDTestTask190522"
 include ':app'

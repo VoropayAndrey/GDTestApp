@@ -1,7 +1,7 @@
 package com.hardway.gdtest.repositories
 
 import android.content.Context
-import com.hardway.gdtest.domain.ContactEntity
+import com.hardway.gdtest.domain.entities.ContactEntity
 import com.hardway.gdtest.repositories.room.AppDatabase
 import com.hardway.gdtest.repositories.room.Contact
 import java.util.*
@@ -27,6 +27,10 @@ class LocalRepositoryImplementation(private val context: Context,
 
     override suspend fun deleteAll() {
         appDatabase.userDao().deleteAll()
+    }
+
+    override suspend fun getById(id: Int): ContactEntity {
+        return contactToEntity(appDatabase.userDao().loadAllByIds(intArrayOf(id))[0])
     }
 
     private fun contactToEntity(contact: Contact): ContactEntity {

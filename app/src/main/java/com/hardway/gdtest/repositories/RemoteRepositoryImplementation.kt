@@ -1,47 +1,21 @@
 package com.hardway.gdtest.repositories
 
 import android.content.Context
-import com.hardway.gdtest.constants.Constants
-import com.hardway.gdtest.domain.ContactEntity
+import com.hardway.gdtest.domain.entities.ContactEntity
 import com.hardway.gdtest.repositories.network.RandomUserService
-import com.hardway.gdtest.repositories.network.responses.GeneratedUserResponse
-import com.hardway.gdtest.repositories.room.Contact
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RemoteRepositoryImplementation: RemoteRepositoryInterface {
     private var context: Context
     private var settingsRepository: SettingsRepositoryInterface
-
-    private val interceptor: HttpLoggingInterceptor by lazy {
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    }
-
-    private val client: OkHttpClient by lazy {
-        OkHttpClient.Builder().addInterceptor(interceptor).build()
-    }
-
-    private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(Constants.Network.BASE_URL)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .client(client)
-        .build()
-
-    private val service: RandomUserService by lazy {
-        retrofit.create(RandomUserService::class.java)
-    }
+    private var service: RandomUserService
 
     constructor(context: Context,
-                settingsRepository: SettingsRepositoryInterface
+                settingsRepository: SettingsRepositoryInterface,
+                service: RandomUserService
     ) {
         this.context = context
         this.settingsRepository = settingsRepository
+        this.service = service
 
     }
 

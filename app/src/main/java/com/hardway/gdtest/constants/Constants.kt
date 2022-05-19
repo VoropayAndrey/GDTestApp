@@ -1,7 +1,7 @@
 package com.hardway.gdtest.constants
 
 object Constants {
-    const val APP_NAME = "GridDynamicsTestApp"
+    const val APP_NAME = "GDTestApp"
     const val TAG = APP_NAME + "_TAG"
     const val DATABASE_NAME = APP_NAME + "_CONTACT_DATABASE"
 
