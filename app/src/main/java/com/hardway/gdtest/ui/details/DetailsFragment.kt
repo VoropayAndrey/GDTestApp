@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.hardway.gdtest.R
 import com.hardway.gdtest.application.GDTestApp
 import com.hardway.gdtest.ui.base.BaseFragment
@@ -28,15 +30,22 @@ open class DetailsFragment : BaseFragment() {
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_details, container, false)
 
-        spinner = view.findViewById(R.id.loading_spinner)
-        spinner.visibility = View.VISIBLE
+        view.loading_spinner.visibility = View.VISIBLE
 
         var contactId = arguments?.getInt("contact_id") ?: 0
 
 
         detailViewModel.fetchedContact.observe(viewLifecycleOwner, Observer {
-            spinner.visibility = View.GONE
-            view.info.text = "" + it.firstName + " " + it.lastName
+            Glide.with(this)
+                .load(it.photoURL)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(view.contact_photo)
+            view.contact_first_name.setText(it.firstName)
+            view.contact_last_name.setText(it.lastName)
+            view.contact_phone_number_1.setText(it.phone1)
+            view.contact_phone_number_2.setText(it.phone2)
+            view.loading_spinner.visibility = View.GONE
         })
 
         detailViewModel.fetchUserById(contactId)

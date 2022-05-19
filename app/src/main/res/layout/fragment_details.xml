@@ -17,13 +17,93 @@
         android:visibility="gone"
         />
 
+    <ImageView
+        android:id="@+id/contact_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        />
+
     <TextView
-        android:id="@+id/info"
+        android:id="@+id/text_first_name"
+        android:text="FIRST NAME: "
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@id/contact_photo"/>
+
+    <EditText
+        android:id="@+id/contact_first_name"
+        android:text=""
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:enabled="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text_first_name"/>
+
+    <TextView
+        android:id="@+id/text_last_name"
+        android:text="LAST NAME: "
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/contact_first_name"
+        app:layout_constraintStart_toEndOf="@id/contact_photo"/>
+
+    <EditText
+        android:id="@+id/contact_last_name"
+        android:text=""
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/contact_first_name"
+        app:layout_constraintStart_toEndOf="@id/text_last_name"/>
+
+    <TextView
+        android:id="@+id/text_phone_number_1"
+        android:text="PHONE 1: "
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/contact_photo"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/contact_phone_number_1"
+        android:text=""
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/contact_photo"
+        app:layout_constraintStart_toEndOf="@id/text_phone_number_1"/>
+
+    <TextView
+        android:id="@+id/text_phone_number_2"
+        android:text="PHONE 2: "
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_phone_number_1"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/contact_phone_number_2"
+        android:text=""
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/contact_phone_number_1"
+        app:layout_constraintStart_toEndOf="@id/text_phone_number_2"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
