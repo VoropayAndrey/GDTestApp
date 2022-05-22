@@ -60,9 +60,69 @@ https://www.hackerrank.com/challenges/prime-checker/problem
 Solution:
 [PrimeChecker.java](app/src/test/java/com/hardway/gdtest/PrimeChecker.java)
 
+'''java
+class Prime {
+    public String checkPrime(Integer... numbers) {
+
+        String output = "";
+        for(Integer number:numbers) {
+            if (number > 1) {
+                if(number > 2) {
+                    for (int i = 2; i < number; ++i) {
+                        if (number % i == 0) {
+                            output += ' ';
+                        } else {
+                            output += number;
+                        }
+                        break;
+                    }
+                } else {
+                    output += number;
+                }
+            } else {
+                output += ' ';
+            }
+        }
+        return output;
+    }
+}
+'''
+
 9.2. Dequeue problem:
 Description:
 https://www.hackerrank.com/challenges/prime-checker/problem
 
 Solution:
 [JavaDequeue.java](app/src/test/java/com/hardway/gdtest/JavaDequeue.java)
+
+'''java
+public void test() {
+    Scanner in = new Scanner("6 3\n" +
+            "5 3 5 2 3 2");
+    Deque deque = new ArrayDeque<Integer>();
+    int n = in.nextInt(); // Array length
+    int m = in.nextInt(); // Subarray length
+
+    for (int i = 0; i < n; i++) {
+        int num = in.nextInt();
+        deque.add(num);
+    }
+
+    ArrayList subarray = new ArrayList(3);
+    subarray.ensureCapacity(3);
+    int numberOfSubArrays = (n - m) + 1;
+
+    for(int i = 0; i < numberOfSubArrays; i++) {
+        Iterator<Integer> iterator = deque.iterator();
+        for(int j = 0; j < m; j++) {
+            subarray.add(j, iterator.next());
+        }
+        deque.removeFirst();
+    }
+}
+
+public int getUnique(ArrayList array) {
+    HashSet<Integer> set = new HashSet<Integer>(array);
+    return set.size();
+}
+'''
