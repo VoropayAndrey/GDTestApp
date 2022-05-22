@@ -30,17 +30,28 @@ Given ViewModel is shared between all fragments.
 
 3. Because the ComplicatedObject has a lot of smaller pieces it would be nice to create a factory for ComplicatedObjects.
 In this case Factory Method design pattern is suited well.
-![Abstract Method Pattern](images/ComplicatedEntity_AbstractMethod.png)
+
+<p align="center">
+  <img width="800" height="400" src="images/ComplicatedEntity_AbstractMethod.png">
+</p>
+
+
 We will need to change only one class to add new implemntation of ComplicatedEntityInterface.
 
 For the smaller parts some kind of strategy pattern is proposed.
 Each of the parts has it own interface and a set of implementation that can be changed based on the processed data.
-![Strategy Pattern](images/PartsStructure_Strategy.png)
+
+<p align="center">
+  <img width="1000" height="200" src="images/PartsStructure_Strategy.png">
+</p>
 
 4. Flavorign is added to the application level gradle file:
 [Here](https://github.com/VoropayAndrey/GDTestApp/blob/1c5eb796ebac1061635b12d69a38425a00a4c7cd/app/build.gradle#L42)
 This flavoring will change the colors of the app based on the app structure:
-![App structure](images/app_structure.png)
+
+<p align="center">
+  <img width="250" height="300" src="images/app_structure.png">
+</p>
 
 5. Different project flavor has it own implmenetation of ComplicatedEntityInterface [ComplicatedEntityImplementation1](app/src/dark/java/com/hardway/gdtest/domain/entities/ComplicatedEntityImplementation1.kt) and [ComplicatedEntityImplementation2](app/src/dark/java/com/hardway/gdtest/domain/entities/ComplicatedEntityImplementation2.kt).
 
@@ -48,8 +59,24 @@ This flavoring will change the colors of the app based on the app structure:
 Each view model is instantiated by viewModels() using Dagger2/Hilt to inject dependencies to the ViewModels.
 
 7. Bottle necks
+- To receive an event for the event bus a fragment should be visible and active;
+- The event bus is okay for small project, but it's hard to debug in larger projects;
+- Each product flavor requires its own copy of packages and classes, it will be a bit more difficult to change interfaces;
+- Each part of complicated object can be represented by a Wrapper:
+````kotlin
+    var partInterface: PartInterface  = FirstPartImplementation1(SecondPartImplemetation2(ThirdPartImplemetation3()))
+    
+    var partInterface: PartInterface = ThirdPartImplemetation3(SecondPartImplemetation2(FirstPartImplementation1()))
+````
+The interface, arguments and returned data can be unified between them.
+This will allow to change sequence of data filtering, checking, processing, logging and so on.
 
-8. Classes.
+
+8. Feel free to browse my public repositories:<br/>
+https://github.com/VoropayAndrey<br/>
+https://gitlab.com/voropayandrey<br/>
+
+Any other source code is intellectual-property of my clients protected by Non Disclosure Agreement.
 
 9. Challenges:
 
