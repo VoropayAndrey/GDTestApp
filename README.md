@@ -50,7 +50,7 @@ Each of the parts has it own interface and a set of implementation that can be c
 This flavoring will change the colors of the app based on the app structure:
 
 <p align="center">
-  <img width="350" height="400" src="images/app_structure.png">
+  <img width="250" height="300" src="images/app_structure.png">
 </p>
 
 5. Different project flavor has it own implmenetation of ComplicatedEntityInterface [ComplicatedEntityImplementation1](app/src/dark/java/com/hardway/gdtest/domain/entities/ComplicatedEntityImplementation1.kt) and [ComplicatedEntityImplementation2](app/src/dark/java/com/hardway/gdtest/domain/entities/ComplicatedEntityImplementation2.kt).
@@ -59,7 +59,10 @@ This flavoring will change the colors of the app based on the app structure:
 Each view model is instantiated by viewModels() using Dagger2/Hilt to inject dependencies to the ViewModels.
 
 7. Bottle necks
-- To receive an event for the event but a fragment should be visible and active.
+- To receive an event for the event bus a fragment should be visible and active;
+- The event bus is okay for small project, but it's hard to debug in larger projects;
+- Each product flavor requires its own copy of packages and classes, it will be a bit more difficult to change interfaces;
+- 
 
 8. Feel free to browse my public repositories:
 https://github.com/VoropayAndrey
