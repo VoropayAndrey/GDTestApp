@@ -30,17 +30,28 @@ Given ViewModel is shared between all fragments.
 
 3. Because the ComplicatedObject has a lot of smaller pieces it would be nice to create a factory for ComplicatedObjects.
 In this case Factory Method design pattern is suited well.
-![Abstract Method Pattern](images/ComplicatedEntity_AbstractMethod.png)
+
+<p align="center">
+  <img width="800" height="400" src="images/ComplicatedEntity_AbstractMethod.png">
+</p>
+
+
 We will need to change only one class to add new implemntation of ComplicatedEntityInterface.
 
 For the smaller parts some kind of strategy pattern is proposed.
 Each of the parts has it own interface and a set of implementation that can be changed based on the processed data.
-![Strategy Pattern](images/PartsStructure_Strategy.png)
+
+<p align="center">
+  <img width="1000" height="200" src="images/PartsStructure_Strategy.png">
+</p>
 
 4. Flavorign is added to the application level gradle file:
 [Here](https://github.com/VoropayAndrey/GDTestApp/blob/1c5eb796ebac1061635b12d69a38425a00a4c7cd/app/build.gradle#L42)
 This flavoring will change the colors of the app based on the app structure:
-![App structure](images/app_structure.png)
+
+<p align="center">
+  <img width="350" height="400" src="images/app_structure.png">
+</p>
 
 5. Different project flavor has it own implmenetation of ComplicatedEntityInterface [ComplicatedEntityImplementation1](app/src/dark/java/com/hardway/gdtest/domain/entities/ComplicatedEntityImplementation1.kt) and [ComplicatedEntityImplementation2](app/src/dark/java/com/hardway/gdtest/domain/entities/ComplicatedEntityImplementation2.kt).
 
