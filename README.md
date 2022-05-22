@@ -59,8 +59,13 @@ This flavoring will change the colors of the app based on the app structure:
 Each view model is instantiated by viewModels() using Dagger2/Hilt to inject dependencies to the ViewModels.
 
 7. Bottle necks
+- To receive an event for the event but a fragment should be visible and active.
 
-8. Classes.
+8. Feel free to browse my public repositories:
+https://github.com/VoropayAndrey
+https://gitlab.com/voropayandrey
+
+Any other source code is intellectual-property of my clients protected by Non Disclosure Agreement.
 
 9. Challenges:
 
