@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="splash_screen_text">#FF86AC7C</color>
+
+    <color name="background_toolbar">#3E3322</color>
 </resources>

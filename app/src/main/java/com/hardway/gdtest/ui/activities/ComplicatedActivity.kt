@@ -10,13 +10,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_complicated.*
 
 @AndroidEntryPoint
-class ComplicatedActivity : AppCompatActivity() {
+class ComplicatedActivity : BaseActivity() {
 
     val viewModel: ComplicatedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_complicated)
+        initToolbar()
 
         viewModel.complicatedAlgorithmResult.observe(this, Observer {
             resultTextValue.text = it.toString()

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Start screen"
+        android:id="@+id/startScreenMenuItem"/>
+    <item
+        android:title="Contact list"
+        android:id="@+id/contactListMenuItem"/>
+    <item
+        android:title="Complicated activity"
+        android:id="@+id/complicatedActivityMenuItem"/>
+</menu>

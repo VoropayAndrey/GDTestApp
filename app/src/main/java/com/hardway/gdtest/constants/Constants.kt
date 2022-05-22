@@ -4,7 +4,7 @@ object Constants {
     const val APP_NAME = "GDTestApp"
     const val TAG = APP_NAME + "_TAG"
     const val DATABASE_NAME = APP_NAME + "_CONTACT_DATABASE"
-
+    const val DESTINATION_EXTRA = APP_NAME + "_DESTINATION_EXTRA"
     object SavedData {
         const val SHARED_PREFERENCES_NAME = APP_NAME + "_SHARED_PREFERENCES_NAME"
         const val IS_FIRST_RUN = "_IS_FIRST_RUN"
