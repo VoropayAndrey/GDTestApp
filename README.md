@@ -60,7 +60,7 @@ https://www.hackerrank.com/challenges/prime-checker/problem
 Solution:
 [PrimeChecker.java](app/src/test/java/com/hardway/gdtest/PrimeChecker.java)
 
-'''java
+````java
 class Prime {
     public String checkPrime(Integer... numbers) {
 
@@ -86,7 +86,7 @@ class Prime {
         return output;
     }
 }
-'''
+````
 
 9.2. Dequeue problem:
 Description:
@@ -95,7 +95,7 @@ https://www.hackerrank.com/challenges/prime-checker/problem
 Solution:
 [JavaDequeue.java](app/src/test/java/com/hardway/gdtest/JavaDequeue.java)
 
-'''java
+````java
 public void test() {
     Scanner in = new Scanner("6 3\n" +
             "5 3 5 2 3 2");
@@ -125,4 +125,4 @@ public int getUnique(ArrayList array) {
     HashSet<Integer> set = new HashSet<Integer>(array);
     return set.size();
 }
-'''
+````
