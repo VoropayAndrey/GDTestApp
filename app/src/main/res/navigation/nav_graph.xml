@@ -3,11 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/slashFragment">
 
     <fragment
-        android:id="@+id/startFragment"
-        android:name="com.hardway.gdtest.ui.start.StartFragment"
+        android:id="@+id/slashFragment"
+        android:name="com.hardway.gdtest.ui.fragments.SlashBaseFragment"
+        android:label="fragment_slash"
+        tools:layout="@layout/fragment_slash" >
+        <action
+            android:id="@+id/action_slashFragment_to_contactFragment"
+            app:destination="@id/contactsFragment"
+            app:popUpTo="@id/slashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.hardway.gdtest.ui.fragments.ContactsFragment"
         android:label="StartFragment" >
         <action
             android:id="@+id/action_startFragment_to_detailsFragment"
@@ -20,9 +32,10 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.hardway.gdtest.ui.details.DetailsFragment"
+        android:name="com.hardway.gdtest.ui.fragments.DetailsFragment"
         android:label="DetailsFragment" >
         <argument android:name="contact_id"
             app:argType="integer" />
     </fragment>
+
 </navigation>

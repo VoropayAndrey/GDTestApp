@@ -1,28 +1,27 @@
-package com.hardway.gdtest.ui.start
+package com.hardway.gdtest.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hardway.gdtest.R
-import com.hardway.gdtest.ui.base.BaseFragment
-import com.hardway.gdtest.ui.details.DetailsFragment
-import com.hardway.gdtest.ui.main.MainActivity
-import com.hardway.gdtest.ui.viewmodels.MainViewModel
+import com.hardway.gdtest.constants.Constants
+import com.hardway.gdtest.ui.activities.MainActivity
+import com.hardway.gdtest.ui.start.ContactAdapter
+import com.hardway.gdtest.ui.viewmodels.StartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_start.view.*
 
 @AndroidEntryPoint
-open class StartFragment : BaseFragment() {
+open class ContactsFragment : BaseFragment() {
 
     private lateinit var contactAdapter: ContactAdapter
 
-    val mainViewModel: MainViewModel by viewModels()
+    private val startViewModel: StartViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,10 +46,14 @@ open class StartFragment : BaseFragment() {
         view.contactList.layoutManager = LinearLayoutManager(context)
         view.contactList.adapter = contactAdapter
 
-        mainViewModel.contactsLiveData.observe(viewLifecycleOwner, Observer {
+        startViewModel.contactsLiveData.observe(viewLifecycleOwner, Observer {
             contactAdapter.items = it
             spinner.visibility = View.GONE
             contactAdapter.notifyDataSetChanged()
+        })
+
+        getSharedViewMode().contactsLiveData.observe(viewLifecycleOwner, Observer {
+            Log.d(Constants.TAG, "ContactsFragment, login state change, isLoggedIn: ${it.isLoggedIn}")
         })
 
         return view

@@ -1,30 +1,25 @@
-package com.hardway.gdtest.ui.details
+package com.hardway.gdtest.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.hardway.gdtest.R
-import com.hardway.gdtest.application.GDTestApp
-import com.hardway.gdtest.ui.base.BaseFragment
+import com.hardway.gdtest.constants.Constants
+import com.hardway.gdtest.ui.fragments.BaseFragment
 import com.hardway.gdtest.ui.viewmodels.DetailViewModel
-import com.hardway.gdtest.ui.viewmodels.MainViewModel
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_details.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 open class DetailsFragment : BaseFragment() {
 
-    val detailViewModel: DetailViewModel by viewModels()
+    private val detailViewModel: DetailViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,7 +28,6 @@ open class DetailsFragment : BaseFragment() {
         view.loading_spinner.visibility = View.VISIBLE
 
         var contactId = arguments?.getInt("contact_id") ?: 0
-
 
         detailViewModel.fetchedContact.observe(viewLifecycleOwner, Observer {
             Glide.with(this)
@@ -49,6 +43,10 @@ open class DetailsFragment : BaseFragment() {
         })
 
         detailViewModel.fetchUserById(contactId)
+
+        getSharedViewMode().contactsLiveData.observe(viewLifecycleOwner, Observer {
+            Log.d(Constants.TAG, "DetailsFragment, login state change, isLoggedIn: ${it.isLoggedIn}")
+        })
 
         return view
     }

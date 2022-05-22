@@ -13,7 +13,7 @@ class ResetDatabaseUseCase(private val localRepositoryInterface: LocalRepository
 
 
 
-    override suspend fun invoke() {
+    override suspend fun invoke(): Boolean {
         localRepositoryInterface.deleteAll()
 
         coroutineScope {
@@ -26,6 +26,7 @@ class ResetDatabaseUseCase(private val localRepositoryInterface: LocalRepository
                     .collect()
             }
         }
+        return true
     }
 
     suspend fun generateUser(index: Int) {

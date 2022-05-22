@@ -1,5 +1,5 @@
 package com.hardway.gdtest.domain.usecases
 
 interface UseCase {
-    suspend fun invoke()
+    suspend fun invoke(): Boolean
 }

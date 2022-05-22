@@ -33,6 +33,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        create("dark") {
+            applicationIdSuffix = ".dark"
+            versionNameSuffix = "-dark"
+        }
+        create("ligth") {
+            applicationIdSuffix = ".ligth"
+            versionNameSuffix = "-ligth"
+        }
+    }
 
 }
 

@@ -1,7 +1,9 @@
 package com.hardway.gdtest.di.modules
 
+import com.hardway.gdtest.domain.usecases.ComplicatedUseCase
 import com.hardway.gdtest.domain.usecases.FirstInitContactsUseCase
 import com.hardway.gdtest.domain.usecases.ResetDatabaseUseCase
+import com.hardway.gdtest.domain.usecases.UseCase
 import com.hardway.gdtest.repositories.LocalRepositoryInterface
 import com.hardway.gdtest.repositories.RemoteRepositoryInterface
 import com.hardway.gdtest.repositories.SettingsRepositoryInterface
@@ -25,5 +27,10 @@ class UseCaseModule {
                                     resetDatabaseUseCase: ResetDatabaseUseCase): FirstInitContactsUseCase {
         return FirstInitContactsUseCase(settingsRepositoryInterface,
             resetDatabaseUseCase)
+    }
+
+    @Provides
+    fun provideComplicatedUseCase(): ComplicatedUseCase {
+        return ComplicatedUseCase()
     }
 }
