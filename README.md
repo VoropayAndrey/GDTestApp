@@ -72,9 +72,9 @@ The interface, arguments and returned data can be unified between them.
 This will allow to change sequence of data filtering, checking, processing, logging and so on.
 
 
-8. Feel free to browse my public repositories:
-https://github.com/VoropayAndrey
-https://gitlab.com/voropayandrey
+8. Feel free to browse my public repositories:<br/>
+https://github.com/VoropayAndrey<br/>
+https://gitlab.com/voropayandrey<br/>
 
 Any other source code is intellectual-property of my clients protected by Non Disclosure Agreement.
 
