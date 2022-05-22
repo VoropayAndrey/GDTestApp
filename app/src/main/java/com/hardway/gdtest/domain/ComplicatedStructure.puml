@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface ComplicatedEntityInterface {
+    doSomething(arg1: Int, arg2: Int): Boolean
+    getInstance(type: EntityType): ComplicatedEntityInterface
+}
+
+interface FirstPartInterface {
+}
+
+interface SecondPartInterface {
+}
+
+interface ThirdPartInterface {
+}
+
+
+ComplicatedEntityImplementation1 <- FirstPartInterface
+ComplicatedEntityImplementation1 <- SecondPartInterface
+ComplicatedEntityImplementation1 <- ThirdPartInterface
+
+ComplicatedEntityImplementation2 <- SecondPartInterface
+ComplicatedEntityImplementation2 <- ThirdPartInterface
+
+class ComplicatedEntityImplementation1 {
+    firstPartInterface: FirstPartInterface
+    secondPartInterface: SecondPartInterface
+    thirdPartInterface: ThirdPartInterface
+    doSomething(arg1: Int, arg2: Int): Boolean
+}
+class ComplicatedEntityImplementation2 {
+    secondPartInterface: SecondPartInterface
+    thirdPartInterface: ThirdPartInterface
+    doSomething(arg1: Int, arg2: Int): Boolean
+}
+
+ComplicatedEntityInterface <- ComplicatedEntityInterface
+ComplicatedEntityInterface <|-- ComplicatedEntityImplementation1
+ComplicatedEntityInterface <|-- ComplicatedEntityImplementation2
+
+@enduml

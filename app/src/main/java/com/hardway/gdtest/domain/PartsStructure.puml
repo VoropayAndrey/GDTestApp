@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ComplicatedEntityImplementation1 {
+    firstPartInterface: FirstPartInterface
+    secondPartInterface: SecondPartInterface
+    thirdPartInterface: ThirdPartInterface
+    doSomething(arg1: Int, arg2: Int): Boolean
+}
+
+interface FirstPartInterface {
+    fun invoke()
+}
+
+interface SecondPartInterface {
+    fun filter(input: Array<Int>): Array<Int>
+}
+
+interface ThirdPartInterface {
+     fun check(input: Array<Int>): Boolean
+}
+
+class FirstPartImplementation1 {
+      fun invoke()
+}
+
+class FirstPartImplementation2 {
+      fun invoke()
+}
+
+class SecondPartImplementation1 {
+      fun filter(input: Array<Int>): Array<Int>
+}
+
+class SecondPartImplementation2 {
+      fun filter(input: Array<Int>): Array<Int>
+}
+
+class SecondPartImplementation3 {
+      fun filter(input: Array<Int>): Array<Int>
+}
+
+class ThirdPartImplementation1 {
+      fun check(input: Array<Int>): Boolean
+}
+
+class ThirdPartImplementation2 {
+      fun check(input: Array<Int>): Boolean
+}
+
+
+
+
+FirstPartInterface <|-- FirstPartImplementation1
+FirstPartInterface <|-- FirstPartImplementation2
+
+SecondPartInterface <|-- SecondPartImplementation1
+SecondPartInterface <|-- SecondPartImplementation2
+SecondPartInterface <|-- SecondPartImplementation3
+
+ThirdPartInterface <|-- ThirdPartImplementation1
+ThirdPartInterface <|-- ThirdPartImplementation2
+
+FirstPartInterface <- ComplicatedEntityImplementation1
+SecondPartInterface <- ComplicatedEntityImplementation1
+ThirdPartInterface <- ComplicatedEntityImplementation1
+
+@enduml
