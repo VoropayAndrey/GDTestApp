@@ -62,7 +62,15 @@ Each view model is instantiated by viewModels() using Dagger2/Hilt to inject dep
 - To receive an event for the event bus a fragment should be visible and active;
 - The event bus is okay for small project, but it's hard to debug in larger projects;
 - Each product flavor requires its own copy of packages and classes, it will be a bit more difficult to change interfaces;
-- 
+- Each part of complicated object can be represented by a Wrapper:
+````kotlin
+    var partInterface: PartInterface  = FirstPartImplementation1(SecondPartImplemetation2(ThirdPartImplemetation3()))
+    
+    var partInterface: PartInterface = ThirdPartImplemetation3(SecondPartImplemetation2(FirstPartImplementation1()))
+````
+The interface, arguments and returned data can be unified between them.
+This will allow to change sequence of data filtering, checking, processing, logging and so on.
+
 
 8. Feel free to browse my public repositories:
 https://github.com/VoropayAndrey
